@@ -10,8 +10,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(`${__dirname}/../dist/index.html`));
 
-app.get('/test', (req, res) => {
-  res.sendStatus(200);
+app.get('/songs', (req, res) => {
+  db.connection.query('select * from songs', (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(results);
+    }
+  });
 });
 
 
@@ -35,25 +41,10 @@ const getSongs = () => {
     .catch((err) => {
       console.log(err);
     });
-  // request.get(options, (err, response, data) => {
-  //   console.log(data);
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     data.forEach((song) => {
-  //       db.save(song);
-  //     });
-  //   }
-  // });
 };
 app.post('/songs', (req, res) => {
   getSongs(req, res);
   res.sendStatus(200);
-  // .then((data) => {
-  // })
-  // .catch((err) => {
-  //   res.send(err);
-  // });
 });
 
 const port = 8080;
