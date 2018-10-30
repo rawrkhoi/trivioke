@@ -14,8 +14,7 @@ CREATE TABLE users (
 
 CREATE TABLE songs (
   id int NOT NULL AUTO_INCREMENT,
-  artist varchar(15) NOT NULL,
-  title varchar(20) NOT NULL,
+  song varchar(100) NOT NULL,
   uri varchar(100) NOT NULL,
   PRIMARY KEY (ID)
 );

@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --open",
+    "serve": "nodemon server/index.js",
+    "webpack": "webpack -d --watch",
     "build": "webpack --mode production"
   },
   "repository": {
@@ -40,8 +42,13 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
     "mysql": "^2.16.0",
+    "nodemon": "^1.18.5",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "request": "^2.88.0"
   }
 }
