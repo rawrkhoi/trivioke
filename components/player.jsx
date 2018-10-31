@@ -40,11 +40,11 @@ class VideoPlayer extends React.Component {
   render() {
     return (
       <div>
-        <Player playsInline>
-          <iframe fluid="true" className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.state.video.uri}`} allowFullScreen></iframe> 
+        <Player playsInline >
+          <iframe fluid="true" className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.state.video.uri}`} allowFullScreen ></iframe> 
         </Player>
         <button onClick={this.changeVideo}>
-          Activate Lasers</button> 
+          Change Song</button> 
       </div>
     );
   }
