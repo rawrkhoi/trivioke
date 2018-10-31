@@ -7,4 +7,26 @@ const connection = mysql.createConnection({
   database: 'trivioke',
 });
 
-connection.connect();
+connection.connect((err) => {
+  if (err) {
+    console.log('db connection error');
+  } else {
+    console.log('Connected');
+  }
+});
+
+// this should only happen once;
+const save = (data) => {
+  console.log(data);
+  const q = `insert into songs(song, uri) values ('${data.snippet.title}', '${data.etag}')`;
+  connection.query(q, (err, results) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('songs saved to db');
+    }
+  });
+};
+
+module.exports.save = save;
+module.exports.connection = connection;
