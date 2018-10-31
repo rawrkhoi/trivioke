@@ -12,7 +12,6 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));
-// app.use(express.static(`${__dirname}/../dist/index.html`));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/songs', (req, res) => {
@@ -68,13 +67,31 @@ app.post('/signUp', (req, res) => {
   });
 });
 
-app.get('/login', (req, res) => {
-  
-})
+
+const checkPassword = (req, res) => {
+  bcrypt.hash(req.query.pw, saltRounds, (err, hash) => {
+    if (err) {
+      res.send(500);
+      console.log(err);
+    } else {
+      const q = 'select * from users where username=?';
+      const args = [req.query.name];
+      db.connection.query(q, args, (err, results) => {
+        console.log(hash, results[0].pw);
+        if (hash === results[0].pw) {
+          console.log('password match');
+          res.sendStatus(200).redirect('/');
+        } else {
+          console.log('passwords don\'t match');
+          res.sendStatus(404);
+        }
+      });
+    }
+  });
+};
 
 app.get('/login', (req, res) => {
-  // check login info against db info
-  // redirect client
+  checkPassword(req, res);
 });
 
 const port = 8080;
