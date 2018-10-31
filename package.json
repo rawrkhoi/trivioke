@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "PORT=8080 webpack-dev-server --mode development --open",
-    "serve": "nodemon server/index.js",
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
     "webpack": "webpack -d --watch",
     "build": "webpack --mode production"
   },
@@ -44,11 +44,15 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.5",
+    "path": "^0.12.7",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "request": "^2.88.0"
+    "redux": "^4.0.1",
+    "request": "^2.88.0",
+    "video-react": "^0.13.1"
   }
 }

@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+import { Trivia } from '';
+class Trivia extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      questions: [],
+      }
+    };
 
-const GameBoard = ({ questions }) => (
-  <div>
-    <h4> Repo List Component </h4>
-    There are {questions.length} questions.
-    {questions.map(question => (
-      <li key={question.category}> <em>Questions: {question.question}</em> | | <strong> Answer:</strong> {question.correct_answer} |
-        | <i>Wrong Answers: </i> <li> {question.incorrect_answers}</li>
-      </li>
-    ))}
-  </div>
-);
+  
+  render() {
+    return (
+      <div>
+        <Trivia>
 
-export default GameBoard;
+        </Trivia>
+      </div>
+    );
+  }
+}
