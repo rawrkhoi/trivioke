@@ -7,17 +7,23 @@ class VideoPlayer extends React.Component {
     super(props);
     this.state = {
       videos: [],
-      video: null,
+      video: {
+        song: "Dolly Parton - Jolene Karaoke Lyrics",
+        uri: "8ff0szPBM2M",
+    }
     };
+    this.changeVideo = this.changeVideo.bind(this);
+
   }
 
   componentDidMount() {
-    axios.get('/songs')
+  axios({ method: 'GET', url: '/songs', headers: { 'Access-Control-Allow-Origin': '*'} })
       .then((res) => {
         this.setState({ 
+          video: res.data[3],
           videos: res.data,
          });
-
+         console.log(this.state)
       })
       .catch((error) => {
         console.log(error);
@@ -25,7 +31,7 @@ class VideoPlayer extends React.Component {
   }
 
   changeVideo() {
-    const rand = Math.floor(Math.random() * this.state.videos.length) + 1;
+    const rand = Math.floor(Math.random() * 43) + 1;
     this.setState({
       video: this.state.videos[rand]
     });
@@ -34,25 +40,13 @@ class VideoPlayer extends React.Component {
   render() {
     return (
       <div>
-       
-        <Player
-        playsInline
-        src="https://www.youtube.com/embed/${this.state.video.etag}"
-        />
+        <Player playsInline>
+          <iframe fluid="true" className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.state.video.uri}`} allowFullScreen></iframe> 
+        </Player>
+        <button onClick={this.changeVideo}>
+          Activate Lasers</button> 
       </div>
-        // <div className="video-player">
-        //   <div className="embed-responsive embed-responsive-16by9">
-        //     <iframe className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.state.video.etag}`} allowFullScreen></iframe>
-        //   </div>
-        //   <div className="video-player-details">
-        //     <h3>{this.state.video.title}</h3>
-        //   </div>
-        // </div>
-        /* embed video player
-        add change video button
-        return to main screen button */ 
     );
   }
 }
-
 export default VideoPlayer;

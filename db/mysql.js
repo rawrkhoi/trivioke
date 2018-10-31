@@ -18,7 +18,7 @@ connection.connect((err) => {
 // this should only happen once;
 const save = (data) => {
   console.log(data);
-  const q = `insert into songs(song, uri) values ('${data.snippet.title}', '${data.etag}')`;
+  const q = `insert into songs(song, uri) values ('${data.snippet.title}', '${data.id.videoId}')`;
   connection.query(q, (err, results) => {
     if (err) {
       console.log(err);

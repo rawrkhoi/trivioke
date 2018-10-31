@@ -1,13 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+const path = require('path');
+const cors = require('cors');
 const key = require('../config.js');
 const db = require('../db/mysql.js');
 
+
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '../dist')));
+// app.use(express.static(`${__dirname}/../dist/index.html`));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(`${__dirname}/../dist/index.html`));
 
 app.get('/songs', (req, res) => {
   db.connection.query('select * from songs', (err, results) => {
@@ -26,7 +31,7 @@ const getSongs = () => {
       chart: 'mostPopular',
       type: 'video',
       key: key.youtube,
-      channelId: 'UCwTRjvjVge51X-ILJ4i22ew',
+      channelId: 'UCXosPWESPuLZoG66YuHKX9Q',
       maxResults: 50,
     },
   };
@@ -48,5 +53,5 @@ app.post('/songs', (req, res) => {
 
 const port = 8080;
 app.listen(process.env.PORT || port, () => {
-  console.log('listening on port 8080!');
+  console.log(`listening on port ${process.env.PORT || port}`);
 });
