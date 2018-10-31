@@ -55,19 +55,27 @@ app.post('/songs', (req, res) => {
 app.post('/signUp', (req, res) => {
   bcrypt.hash(req.query.pw, saltRounds, (err, hash) => {
     if (err) {
-      console.log (err)
+      res.send(500);
+      console.log(err);
     } else {
-      // db.connection.query()
+      const q = 'insert into users(username, pw) values(?, ?)';
+      const args = [req.query.name, hash];
+      db.connection.query(q, args);
+      res.redirect('/');
+      res.end();
+      console.log('user added to db');
     }
-});
-  // .then((data))
-  // .catch((err))
+  });
 });
 
 app.get('/login', (req, res) => {
-  //check login info against db info
-  //redirect client
+  
 })
+
+app.get('/login', (req, res) => {
+  // check login info against db info
+  // redirect client
+});
 
 const port = 8080;
 app.listen(process.env.PORT || port, () => {
