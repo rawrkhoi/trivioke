@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const path = require('path');
 const cors = require('cors');
+const bcrypt = require('bcrypt');
 const key = require('../config.js');
 const db = require('../db/mysql.js');
 
-
+const saltRounds = 10;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -50,6 +51,23 @@ app.post('/songs', (req, res) => {
   getSongs(req, res);
   res.sendStatus(200);
 });
+
+app.post('/signUp', (req, res) => {
+  bcrypt.hash(req.query.pw, saltRounds, (err, hash) => {
+    if (err) {
+      console.log (err)
+    } else {
+      // db.connection.query()
+    }
+});
+  // .then((data))
+  // .catch((err))
+});
+
+app.get('/login', (req, res) => {
+  //check login info against db info
+  //redirect client
+})
 
 const port = 8080;
 app.listen(process.env.PORT || port, () => {
