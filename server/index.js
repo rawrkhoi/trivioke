@@ -46,6 +46,31 @@ app.post('/songs', (req, res) => {
   res.sendStatus(200);
 });
 
+const getQuest = () => {
+  const options = {
+    params: {
+      amount: 1,
+      category: '9',
+      difficulty: 'medium',
+      type: 'multiple',
+    },
+  };
+  axios.get('https://opentdb.com/api.php?', options)
+    .then((data) => {
+      data.data.results.forEach((quest) => {
+        console.log(quest);
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+app.post('/trivia', (req, res) => {
+  getQuest(req, res);
+  res.sendStatus(200);
+});
+
 const port = 8080;
 app.listen(process.env.PORT || port, () => {
   console.log('listening on port 8080!');

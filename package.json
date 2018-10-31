@@ -45,12 +45,8 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
-<<<<<<< HEAD
-    "mysql": "github:mysqljs/mysql",
-=======
     "mysql": "^2.16.0",
     "nodemon": "^1.18.5",
->>>>>>> b582de876e8c3974e98c5e5ed6fe8714e5ee4430
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "request": "^2.88.0"
