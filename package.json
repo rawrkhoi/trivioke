@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --open",
+    "start": "PORT=8080 webpack-dev-server --mode development --open",
     "serve": "nodemon server/index.js",
     "webpack": "webpack -d --watch",
     "build": "webpack --mode production"

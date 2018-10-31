@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-const request = require('request');
 const key = require('../config.js');
 const db = require('../db/mysql.js');
 
@@ -19,7 +18,6 @@ app.get('/songs', (req, res) => {
     }
   });
 });
-
 
 const getSongs = () => {
   const options = {
@@ -42,6 +40,7 @@ const getSongs = () => {
       console.log(err);
     });
 };
+
 app.post('/songs', (req, res) => {
   getSongs(req, res);
   res.sendStatus(200);
