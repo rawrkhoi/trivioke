@@ -1,6 +1,9 @@
 module.exports = {
     extends: "airbnb",
-    env: { browser: true },
+    env: {
+      browser: true,
+      node: true,
+    },
     globals: {
         angular: true,
     },
@@ -9,6 +12,6 @@ module.exports = {
         'import/extensions': 0,
         'react/destructuring-assignment': 1,
         'react/jsx-one-expression-per-line': 0, 
-        'class-methods-use-this': 0,
+        'indent': 2,
     }
 };
