@@ -4,6 +4,7 @@ const axios = require('axios');
 const path = require('path');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 const key = require('../config.js');
 const db = require('../db/mysql.js');
 
@@ -13,6 +14,11 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+  secret: 'supersecret',
+  resave: false,
+  saveUninitialized: true,
+}));
 
 app.get('/songs', (req, res) => {
   db.connection.query('select * from songs', (err, results) => {
@@ -67,6 +73,12 @@ app.post('/signUp', (req, res) => {
   });
 });
 
+const createSession = (req, res, user) => { 
+  req.session.regenerate(() => {
+    req.session.user = user;
+    res.redirect('/');
+  });
+};
 
 const checkPassword = (req, res) => {
   const q = 'select * from users where username=?';
@@ -75,7 +87,8 @@ const checkPassword = (req, res) => {
     bcrypt.compare(req.query.pw, results[0].pw, (err, result) => {
       if (result === true) {
         console.log('passwords match');
-        res.redirect('/');
+        createSession(req, res, req.query.name);
+        console.log(req.session);
       } else {
         console.log('passwords don\'t match');
         res.redirect('/');
