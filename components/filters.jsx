@@ -14,15 +14,16 @@ class Filters extends Component {
           key={i}
           id={`dropdown-basic-${i}`}
         >
-          <MenuItem eventKey="9">General</MenuItem>
-          <MenuItem eventKey="11">Movies</MenuItem>
-          <MenuItem eventKey="14">TV</MenuItem>
-          <MenuItem eventKey="15">Video Games</MenuItem>
-          <MenuItem eventKey="17">Science</MenuItem>
-          <MenuItem eventKey="22">Geography</MenuItem>
-          <MenuItem eventKey="23">History</MenuItem>
-          <MenuItem eventKey="26">Celebs</MenuItem>
-          <MenuItem eventKey="27">Animals</MenuItem>
+          <MenuItem name="cat" id="9" onClick={this.props.click}>General</MenuItem>
+          <MenuItem name="cat" id="11" onClick={this.props.click}>Movies</MenuItem>
+          <MenuItem name="cat" id="14" onClick={this.props.click}>TV</MenuItem>
+          <MenuItem name="cat" id="14" onClick={this.props.click}>TV</MenuItem>
+          <MenuItem name="cat" id="15" onClick={this.props.click}>Video Games</MenuItem>
+          <MenuItem name="cat" id="17" onClick={this.props.click}>Science</MenuItem>
+          <MenuItem name="cat" id="22" onClick={this.props.click}>Geography</MenuItem>
+          <MenuItem name="cat" id="23" onClick={this.props.click}>History</MenuItem>
+          <MenuItem name="cat" id="26" onClick={this.props.click}>Celebs</MenuItem>
+          <MenuItem name="cat" id="27" onClick={this.props.click}>Animals</MenuItem>
         </DropdownButton>
       );
     }

@@ -16,8 +16,8 @@ const Index = () => {
       <Login></Login>
       <SignUp></SignUp>
       <Trivia></Trivia>
-      <VideoPlayer></VideoPlayer>
       <Load></Load>
+      <VideoPlayer></VideoPlayer>
     </div>
   )
 };
