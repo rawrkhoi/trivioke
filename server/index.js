@@ -69,24 +69,18 @@ app.post('/signUp', (req, res) => {
 
 
 const checkPassword = (req, res) => {
-  bcrypt.hash(req.query.pw, saltRounds, (err, hash) => {
-    if (err) {
-      res.send(500);
-      console.log(err);
-    } else {
-      const q = 'select * from users where username=?';
-      const args = [req.query.name];
-      db.connection.query(q, args, (err, results) => {
-        console.log(hash, results[0].pw);
-        if (hash === results[0].pw) {
-          console.log('password match');
-          res.sendStatus(200).redirect('/');
-        } else {
-          console.log('passwords don\'t match');
-          res.sendStatus(404);
-        }
-      });
-    }
+  const q = 'select * from users where username=?';
+  const args = [req.query.name];
+  db.connection.query(q, args, (err, results) => {
+    bcrypt.compare(req.query.pw, results[0].pw, (err, result) => {
+      if (result === true) {
+        console.log('passwords match');
+        res.redirect('/');
+      } else {
+        console.log('passwords don\'t match');
+        res.redirect('/');
+      }
+    });
   });
 };
 
