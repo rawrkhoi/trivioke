@@ -5,6 +5,7 @@ import Login from "../components/login.jsx"
 import SignUp from "../components/signUp.jsx"
 import Trivia from '../components/gameboard.jsx';
 import './index.css';
+import Load from '../components/load.jsx'
 
 
 
@@ -16,6 +17,7 @@ const Index = () => {
       <SignUp></SignUp>
       <Trivia></Trivia>
       <VideoPlayer></VideoPlayer>
+      <Load></Load>
     </div>
   )
 };
