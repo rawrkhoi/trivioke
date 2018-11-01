@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Filters from './filters.jsx'
+import Team from './teamTable.jsx'
 
 class Load extends Component {
   constructor(props) {
@@ -7,8 +8,13 @@ class Load extends Component {
     this.state = {
       diff: null,
       cat: null,
+      team1: '',
+      team2: '',
+      team3: '',
+      team4: '',
     };
-    this.handeleClick = this.handeleClick.bind(this)
+    this.handeleClick = this.handeleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   // Code is invoked after the component is mounted/inserted into the DOM tree.
@@ -21,10 +27,18 @@ class Load extends Component {
       [event.target.name]: event.target.id
     })
   }
+  handleChange() {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
   render() {
     return (
       <div>
+        <div key="team">
+        <Team handleChange={this.handleChange}/>
+        </div>
         <div key="filters">
         <Filters click={this.handeleClick}/>
         </div>
