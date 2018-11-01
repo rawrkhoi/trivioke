@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { Player } from 'video-react';
+import Iframe from 'react-iframe';
 class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
@@ -40,11 +40,16 @@ class VideoPlayer extends React.Component {
   render() {
     return (
       <div>
-        <Player playsInline >
-          <iframe fluid="true" className="embed-responsive-item" src={`https://www.youtube.com/embed/${this.state.video.uri}`} allowFullScreen ></iframe> 
-        </Player>
+        {/* <Player playsInline > */}
         <button onClick={this.changeVideo}>
-          Change Song</button> 
+        Change Song</button> 
+          <Iframe fluid="true" 
+          className="embed-responsive-item" 
+          url={`https://www.youtube.com/embed/${this.state.video.uri}`} 
+          width="500px"
+          height="500px"
+          allowFullScreen />
+        {/* </Player> */}
       </div>
     );
   }
