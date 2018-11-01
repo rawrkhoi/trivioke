@@ -26,15 +26,24 @@ class Trivia extends Component {
   render() {
     const { questions } = this.state;
     const questArray = [];
+    function escapeHtml(text) {
+      return text
+        .replace(/&amp;/g, '&')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'")
+        .replace(/&ldquo;/g, '"')
+        .replace(/&rsquo;/g, "'");
+    }
     questions.forEach((entry) => {
-      // console.log(entry);
       const multiChoice = [
-        <li key={entry.category}>{entry.question}</li>,
+        <li key={entry.category}>{escapeHtml(entry.question)}</li>,
         <div key="answers">
-          <button type="button">{entry.correct_answer}</button>
-          <button type="button">{entry.incorrect_answers[0]}</button>
-          <button type="button">{entry.incorrect_answers[1]}</button>
-          <button type="button">{entry.incorrect_answers[2]}</button>
+          <button type="button">{escapeHtml(entry.correct_answer)}</button>
+          <button type="button">{escapeHtml(entry.incorrect_answers[0])}</button>
+          <button type="button">{escapeHtml(entry.incorrect_answers[1])}</button>
+          <button type="button">{escapeHtml(entry.incorrect_answers[2])}</button>
         </div>,
       ];
       questArray.push(multiChoice);

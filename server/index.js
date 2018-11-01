@@ -51,31 +51,6 @@ app.post('/songs', (req, res) => {
   res.sendStatus(200);
 });
 
-<<<<<<< HEAD
-const getQuest = () => {
-  const options = {
-    params: {
-      amount: 1,
-      category: '9',
-      difficulty: 'medium',
-      type: 'multiple',
-    },
-  };
-  axios.get('https://opentdb.com/api.php?', options)
-    .then((data) => {
-      data.data.results.forEach((quest) => {
-        console.log(quest);
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-app.post('/trivia', (req, res) => {
-  getQuest(req, res);
-  res.sendStatus(200);
-=======
 app.post('/signUp', (req, res) => {
   bcrypt.hash(req.query.pw, saltRounds, (err, hash) => {
     if (err) {
@@ -111,7 +86,6 @@ const checkPassword = (req, res) => {
 
 app.get('/login', (req, res) => {
   checkPassword(req, res);
->>>>>>> 2ea3026e84034a7d4dbc2c6bb221d9404c39ede7
 });
 
 const port = 8080;
