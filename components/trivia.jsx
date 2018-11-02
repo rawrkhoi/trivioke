@@ -10,7 +10,7 @@ class Trivia extends Component {
   }
 
   render() {
-    const { question, triviaRequest } = this.props;
+    const { question, triviaRequest, hidden } = this.props;
     function escapeHtml(text) {
       return text
         .replace(/&amp;/g, '&')
@@ -32,10 +32,10 @@ class Trivia extends Component {
     }
     if (question) {
       const answers = [
-        <button type="button" onClick={() => triviaRequest()}>{escapeHtml(question.correct_answer)}</button>,
-        <button type="button">{escapeHtml(question.incorrect_answers[0])}</button>,
-        <button type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
-        <button type="button">{escapeHtml(question.incorrect_answers[2])}</button>,
+        <button key="c" type="button" onClick={() => triviaRequest()}>{escapeHtml(question.correct_answer)}</button>,
+        <button key="i1" style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[0])}</button>,
+        <button key="i2" style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
+        <button key="i3" type="button">{escapeHtml(question.incorrect_answers[2])}</button>,
       ];
       const shuffleArr = shuffle(answers);
       const multiChoice = [

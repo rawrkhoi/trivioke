@@ -1,28 +1,31 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import axios from 'axios';
+
 class Lifelines extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
-
-
+    // this.handleClick = this.handleClick.bind(this)
   }
+
   handleChange() {
     this.setState({
-    })
+    });
   }
 
-  handleSubmit() {
-
-  }
+  // handleClick() {
+  //   this.props.question.incorrect_answers.splice(2);
+  // }
 
   render() {
+    const { handleClick, triviaRequest } = this.props;
     return (
       <div>
         Lifelines
-        
+        <button type="button" onClick={handleClick}>50/50</button>
+        <button type="button" onClick={triviaRequest}>Change Question</button>
+        <button type="button" onClick={triviaRequest}>Change Category</button>
       </div>
     );
   }

@@ -1,8 +1,7 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable react/sort-comp */
-/* eslint-disable no-undef */
-/* eslint-disable no-restricted-globals */
 import React from 'react';
 import Lifelines from './lifelines.jsx';
 import Trivia from './trivia.jsx';
@@ -11,8 +10,9 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currTeam: null,
+      visibility: true,
       question: null,
+      currTeam: null,
       teams: {
         team1: [],
         team2: [],
@@ -22,6 +22,7 @@ class Game extends React.Component {
     };
     this.triviaRequest = this.triviaRequest.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   triviaRequest() {
@@ -40,6 +41,11 @@ class Game extends React.Component {
   handleChange() {
     this.setState({
     });
+  }
+
+  handleClick() {
+    const { visibility } = this.state;
+    this.setState({ visibility: !visibility });
   }
 
   render() {
