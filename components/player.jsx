@@ -8,17 +8,17 @@ class VideoPlayer extends React.Component {
     this.state = {
       videos: [],
       video: {
-        song: "Dolly Parton - Jolene Karaoke Lyrics",
-        uri: "8ff0szPBM2M",
-    }
+        song: 'Dolly Parton - Jolene Karaoke Lyrics',
+        uri: '8ff0szPBM2M',
+      },
     };
     this.changeVideo = this.changeVideo.bind(this);
   }
 
   componentDidMount() {
-  axios({ method: 'GET', url: '/songs', headers: { 'Access-Control-Allow-Origin': '*'} })
+    axios({ method: 'GET', url: '/songs', headers: { 'Access-Control-Allow-Origin': '*' } })
       .then((res) => {
-        this.setState({ 
+        this.setState({
           video: res.data[3],
           videos: res.data,
         });
@@ -29,23 +29,28 @@ class VideoPlayer extends React.Component {
   }
 
   changeVideo() {
+    const { videos } = this.state;
     const rand = Math.floor(Math.random() * 43) + 1;
     this.setState({
-      video: this.state.videos[rand]
+      video: videos[rand],
     });
   }
 
   render() {
+    const { video } = this.state;
     return (
       <div>
-        <button onClick={this.changeVideo}>
-        Change Song</button> 
-          <Iframe fluid="true" 
-          className="embed-responsive-item" 
-          url={`https://www.youtube.com/embed/${this.state.video.uri}`} 
+        <button onClick={this.changeVideo} type="button">
+          Change Song
+        </button>
+        <Iframe
+          fluid="true"
+          className="embed-responsive-item"
+          url={`https://www.youtube.com/embed/${video.uri}`}
           width="500px"
           height="350px"
-          allowFullScreen />
+          allowFullScreen
+        />
       </div>
     );
   }

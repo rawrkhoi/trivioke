@@ -1,13 +1,17 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
 import React, { Component } from 'react';
-import Filters from './filters.jsx'
-import Team from './teamTable.jsx'
+import Filters from './filters.jsx';
+import Team from './teamTable.jsx';
+import Game from './game.jsx';
 
 class Load extends Component {
   constructor(props) {
     super(props);
     this.state = {
       diff: null,
-      cat: null,
+      category: 9,
       team1: '',
       team2: '',
       team3: '',
@@ -24,23 +28,25 @@ class Load extends Component {
 
   handeleClick() {
     this.setState({
-      [event.target.name]: event.target.id
-    })
+      [event.target.name]: event.target.id,
+    });
   }
+
   handleChange() {
     this.setState({
-      [event.target.name]: event.target.value
-    })
+      [event.target.name]: event.target.value,
+    });
   }
 
   render() {
+    const { category } = this.state;
     return (
       <div>
         <div key="team">
-        <Team handleChange={this.handleChange}/>
+          <Team handleChange={this.handleChange} />
         </div>
         <div key="filters">
-        <Filters click={this.handeleClick}/>
+          <Filters click={this.handeleClick} />
         </div>
         <div key="diff">
           <button type="button" name="diff" id="easy" onClick={this.handeleClick}>Easy</button>
@@ -49,6 +55,9 @@ class Load extends Component {
         </div>
         <div key="begin">
           <button type="button">Begin Game</button>
+        </div>
+        <div key="game">
+          <Game category={category} />
         </div>
       </div>
     );

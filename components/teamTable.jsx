@@ -1,23 +1,26 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import { FormGroup, ControlLabel,FormControl } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class Table extends Component {
   render() {
-      return (
-        <div>
-      <form>
-        <FormGroup
-          controlId="formBasicText"
-        >
-          <ControlLabel>Team 1 Name</ControlLabel>
-          <FormControl
-            type="text"
-            name="team1"
-            placeholder="Enter text"
-            onChange={this.props.handleChange}
-          />
-        </FormGroup>
-      </form>
+    const { handleChange } = this.props;
+    return (
+      <div>
+        <form>
+          <FormGroup
+            controlId="formBasicText"
+          >
+            <ControlLabel>Team 1 Name</ControlLabel>
+            <FormControl
+              type="text"
+              name="team1"
+              placeholder="Enter text"
+              onChange={handleChange}
+            />
+          </FormGroup>
+        </form>
         <form>
           <FormGroup
             controlId="formBasicText"
@@ -27,7 +30,7 @@ class Table extends Component {
               type="text"
               name="team2"
               placeholder="Enter text"
-              onChange={this.props.handleChange}
+              onChange={handleChange}
             />
           </FormGroup>
         </form>
@@ -40,7 +43,7 @@ class Table extends Component {
               type="text"
               name="team3"
               placeholder="Enter text"
-              onChange={this.props.handleChange}
+              onChange={handleChange}
             />
           </FormGroup>
         </form>
@@ -53,12 +56,12 @@ class Table extends Component {
               type="text"
               name="team4"
               placeholder="Enter text"
-              onChange={this.props.handleChange}
+              onChange={handleChange}
             />
           </FormGroup>
         </form>
-        </div>
-      )
+      </div>
+    );
   }
 }
 

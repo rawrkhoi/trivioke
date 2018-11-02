@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
 import React from 'react';
 import axios from 'axios';
 
@@ -10,17 +12,17 @@ class SignUp extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
+
   handleChange() {
     this.setState({
-      [event.target.name]: event.target.value
-    })
+      [event.target.name]: event.target.value,
+    });
   }
 
   handleSubmit() {
     const signUpInfo = this.state;
-    axios({ method: 'POST', url: '/signUp', params: signUpInfo })
+    axios({ method: 'POST', url: '/signUp', params: signUpInfo });
   }
 
   render() {
