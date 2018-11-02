@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-param-reassign */
 import React, { Component } from 'react';
@@ -41,7 +42,7 @@ class Trivia extends Component {
       const multiChoice = [
         <div key="trivia">
           <div key="question">{escapeHtml(question.question)}</div>
-          <div key="answers">{shuffleArr.map(answer => <div>{answer}</div>)}</div>
+          <div key="answers">{shuffleArr.map((answer, i) => <div key={i}>{answer}</div>)}</div>
         </div>,
       ];
       return <div>{multiChoice}</div>;
