@@ -1,22 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import VideoPlayer from "../components/player.jsx"
-import Login from "../components/login.jsx"
 import SignUp from "../components/signUp.jsx"
+import Login from "../components/login.jsx"
 import Trivia from '../components/trivia.jsx';
-import './index.css';
+import VideoPlayer from "../components/player.jsx"
 import Load from '../components/load.jsx'
+import './index.css';
 
 
 
 const Index = () => {
   return  (
     <div>
-      Hello React!
-      <Login></Login>
+      Welcome to Trivioke!
       <SignUp></SignUp>
-      <Trivia></Trivia>
+      <Login></Login>
       <Load></Load>
+      <Trivia></Trivia>
       <VideoPlayer></VideoPlayer>
     </div>
   )

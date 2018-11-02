@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { DropdownButton, MenuItem, ButtonToolbar } from 'react-bootstrap';
 
-
-
 class Filters extends Component {
   render() {
     const BUTTONS = ['Select Category'];
