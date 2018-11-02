@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Iframe from 'react-iframe';
+
 class VideoPlayer extends React.Component {
   constructor(props) {
     super(props);
@@ -22,8 +22,7 @@ class VideoPlayer extends React.Component {
         this.setState({ 
           video: res.data[3],
           videos: res.data,
-         });
-         console.log(this.state)
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +39,6 @@ class VideoPlayer extends React.Component {
   render() {
     return (
       <div>
-        {/* <Player playsInline > */}
         <button onClick={this.changeVideo}>
         Change Song</button> 
           <Iframe fluid="true" 
@@ -49,7 +47,6 @@ class VideoPlayer extends React.Component {
           width="500px"
           height="350px"
           allowFullScreen />
-        {/* </Player> */}
       </div>
     );
   }

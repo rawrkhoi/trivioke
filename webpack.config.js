@@ -1,4 +1,3 @@
-
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
@@ -37,10 +36,4 @@ module.exports = {
     ],
   },
   plugins: [htmlWebpackPlugin],
-  // devServer: {
-  //   host: 'localhost',
-  //   port: 8080,
-  //   historyApiFallback: true,
-  //   open: true,
-  // },
 };

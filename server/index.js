@@ -57,8 +57,8 @@ app.post('/songs', (req, res) => {
   res.sendStatus(200);
 });
 
-const createSession = (req, res, user) => { 
-   req.session.regenerate(() => {
+const createSession = (req, res, user) => {
+  req.session.regenerate(() => {
     req.session.user = user;
     res.redirect('/');
   });
