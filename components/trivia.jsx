@@ -37,7 +37,7 @@ class Trivia extends Component {
     }
     if (question) {
       const multiChoice = [
-        <div>
+        <div key="trivia">
         <div key="question">{escapeHtml(question.question)}</div>
           <button type="button" onClick={() => this.triviaRequest()}>{escapeHtml(question.correct_answer)}</button>
           <button type="button">{escapeHtml(question.incorrect_answers[0])}</button>
