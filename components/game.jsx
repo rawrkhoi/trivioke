@@ -7,6 +7,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       currTeam: null,
+      question: null,
       teams: {
         team1: [],
         team2: [],
@@ -14,9 +15,23 @@ class Game extends React.Component {
         team4: [],
       }
     };
+    this.triviaRequest = this.triviaRequest.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
 
+  triviaRequest() {
+    const url = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
+    fetch(url)
+      .then(res => res.json())
+      .then(data => this.setState({ question: data.results[0] }))
+      .catch((err) => { console.error(err); });
+  }
+
+  componentDidMount() {
+    this.triviaRequest();
 
   }
+
   handleChange() {
     this.setState({
     })
@@ -26,7 +41,7 @@ class Game extends React.Component {
     return (
       <div>
         <Lifelines handleChange={this.handleChange}/>
-        <Trivia handleChange={this.handleChange}/>
+        <Trivia triviaRequest={this.triviaRequest} handleChange={this.handleChange} question={this.state.question}/>
       </div>
     );
   }

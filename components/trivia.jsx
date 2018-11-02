@@ -4,25 +4,24 @@ class Trivia extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    question: null,
     score: 0,
     };
   }
 
-  triviaRequest() {
-    const url = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
-    fetch(url)
-      .then(res => res.json())
-      .then(data => this.setState({ question: data.results[0] } ))
-      .catch((err) => { console.error(err); });
-  }
+  // triviaRequest() {
+  //   const url = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
+  //   fetch(url)
+  //     .then(res => res.json())
+  //     .then(data => this.setState({ question: data.results[0] } ))
+  //     .catch((err) => { console.error(err); });
+  // }
 
   componentDidMount() {
-    this.triviaRequest();
+    this.setState({score: 1});
   }
 
   render() {
-    const { question } = this.state;
+    const { question } = this.props;
     function escapeHtml(text) {
       return text
         .replace(/&amp;/g, '&')
@@ -44,7 +43,7 @@ class Trivia extends Component {
         return answerArr;
       }
       const answers = [
-        <button type="button" onClick={() => this.triviaRequest()}>{escapeHtml(question.correct_answer)}</button>,
+        <button type="button" onClick={() => this.props.triviaRequest()}>{escapeHtml(question.correct_answer)}</button>,
         <button type="button">{escapeHtml(question.incorrect_answers[0])}</button>,
         <button type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
         <button type="button">{escapeHtml(question.incorrect_answers[2])}</button>
