@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import VideoPlayer from "../components/player.jsx"
 import Login from "../components/login.jsx"
 import SignUp from "../components/signUp.jsx"
-import Trivia from '../components/gameboard.jsx';
+import Trivia from '../components/trivia.jsx';
 import './index.css';
 import Load from '../components/load.jsx'
 

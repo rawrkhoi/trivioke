@@ -22,8 +22,7 @@ class VideoPlayer extends React.Component {
         this.setState({ 
           video: res.data[3],
           videos: res.data,
-         });
-         console.log(this.state)
+        });
       })
       .catch((error) => {
         console.log(error);
