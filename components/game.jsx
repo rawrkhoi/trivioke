@@ -49,14 +49,19 @@ class Game extends React.Component {
   }
 
   render() {
-    const { question } = this.state;
+    const { question, visibility } = this.state;
     return (
       <div>
-        <Lifelines handleChange={this.handleChange} />
+        <Lifelines
+          handleChange={this.handleChange}
+          triviaRequest={this.triviaRequest}
+          handleClick={this.handleClick}
+        />
         <Trivia
           triviaRequest={this.triviaRequest}
           handleChange={this.handleChange}
           question={question}
+          hidden={visibility}
         />
       </div>
     );

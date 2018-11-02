@@ -6,17 +6,7 @@ class Lifelines extends React.Component {
     super(props);
     this.state = {
     };
-    // this.handleClick = this.handleClick.bind(this)
   }
-
-  handleChange() {
-    this.setState({
-    });
-  }
-
-  // handleClick() {
-  //   this.props.question.incorrect_answers.splice(2);
-  // }
 
   render() {
     const { handleClick, triviaRequest } = this.props;

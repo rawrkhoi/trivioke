@@ -41,7 +41,7 @@ class Trivia extends Component {
       const multiChoice = [
         <div key="trivia">
           <div key="question">{escapeHtml(question.question)}</div>
-          <div key="answers">{shuffleArr.map(answer => <li>{answer}</li>)}</div>
+          <div key="answers">{shuffleArr.map(answer => <div>{answer}</div>)}</div>
         </div>,
       ];
       return <div>{multiChoice}</div>;
