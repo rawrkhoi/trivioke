@@ -50,7 +50,6 @@ class Load extends Component {
         <div key="begin">
           <button type="button">Begin Game</button>
         </div>
-
       </div>
     );
   }

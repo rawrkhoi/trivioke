@@ -7,14 +7,13 @@ class Filters extends Component {
     const renderDropdownButton = (title, i) => {
       return (
         <DropdownButton
-          bsStyle={title.toLowerCase()}
+          bsStyle="default"
           title={title}
           key={i}
           id={`dropdown-basic-${i}`}
         >
           <MenuItem name="cat" id="9" onClick={this.props.click}>General</MenuItem>
           <MenuItem name="cat" id="11" onClick={this.props.click}>Movies</MenuItem>
-          <MenuItem name="cat" id="14" onClick={this.props.click}>TV</MenuItem>
           <MenuItem name="cat" id="14" onClick={this.props.click}>TV</MenuItem>
           <MenuItem name="cat" id="15" onClick={this.props.click}>Video Games</MenuItem>
           <MenuItem name="cat" id="17" onClick={this.props.click}>Science</MenuItem>

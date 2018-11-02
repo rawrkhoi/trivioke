@@ -29,7 +29,6 @@ class Game extends React.Component {
 
   componentDidMount() {
     this.triviaRequest();
-
   }
 
   handleChange() {

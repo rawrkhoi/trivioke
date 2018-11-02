@@ -13,7 +13,6 @@ class VideoPlayer extends React.Component {
     }
     };
     this.changeVideo = this.changeVideo.bind(this);
-
   }
 
   componentDidMount() {
@@ -35,7 +34,7 @@ class VideoPlayer extends React.Component {
       video: this.state.videos[rand]
     });
   }
-  //
+
   render() {
     return (
       <div>

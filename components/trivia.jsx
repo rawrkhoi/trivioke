@@ -8,18 +8,6 @@ class Trivia extends Component {
     };
   }
 
-  // triviaRequest() {
-  //   const url = 'https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple';
-  //   fetch(url)
-  //     .then(res => res.json())
-  //     .then(data => this.setState({ question: data.results[0] } ))
-  //     .catch((err) => { console.error(err); });
-  // }
-
-  componentDidMount() {
-    this.setState({score: 1});
-  }
-
   render() {
     const { question } = this.props;
     function escapeHtml(text) {
@@ -52,10 +40,10 @@ class Trivia extends Component {
       const multiChoice = [
         <div key="trivia">
           <div key="question">{escapeHtml(question.question)}</div>
-          <div key="answers">{shuffleArr.map(answer => <li>{answer}</li>)}</div>
+          <div key="answers">{shuffleArr.map((answer, i) => <li key={i}>{answer}</li>)}</div>
         </div>,
       ];
-    return <div>{multiChoice}</div>;
+      return <div>{multiChoice}</div>;
     } else {
       return <div>Loading</div>
     }
