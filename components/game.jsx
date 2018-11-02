@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-undef */
@@ -5,7 +6,6 @@
 import React from 'react';
 import Lifelines from './lifelines.jsx';
 import Trivia from './trivia.jsx';
-import Load from './load.jsx';
 
 class Game extends React.Component {
   constructor(props) {
@@ -13,7 +13,6 @@ class Game extends React.Component {
     this.state = {
       currTeam: null,
       question: null,
-      // category: this.props.category,
       teams: {
         team1: [],
         team2: [],
@@ -26,7 +25,8 @@ class Game extends React.Component {
   }
 
   triviaRequest() {
-    const url = `https://opentdb.com/api.php?amount=1&category=${this.props.category}&difficulty=medium&type=multiple`;
+    const { category, diff } = this.props;
+    const url = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${diff}&type=multiple`;
     fetch(url)
       .then(res => res.json())
       .then(data => this.setState({ question: data.results[0] }))

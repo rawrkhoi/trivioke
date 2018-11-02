@@ -10,7 +10,7 @@ class Load extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      diff: null,
+      diff: 'medium',
       category: 9,
       team1: '',
       team2: '',
@@ -39,7 +39,7 @@ class Load extends Component {
   }
 
   render() {
-    const { category } = this.state;
+    const { category, diff } = this.state;
     return (
       <div>
         <div key="team">
@@ -57,7 +57,7 @@ class Load extends Component {
           <button type="button">Begin Game</button>
         </div>
         <div key="game">
-          <Game category={category} />
+          <Game category={category} diff={diff} />
         </div>
       </div>
     );
