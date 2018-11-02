@@ -6,6 +6,7 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      visibility: true,
       currTeam: null,
       question: null,
       teams: {
@@ -17,6 +18,7 @@ class Game extends React.Component {
     };
     this.triviaRequest = this.triviaRequest.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   triviaRequest() {
@@ -29,19 +31,20 @@ class Game extends React.Component {
 
   componentDidMount() {
     this.triviaRequest();
-
   }
-
+  
   handleChange() {
-    this.setState({
-    })
   }
-
+  
+  handleClick() {
+    this.setState({visibility: !this.state.visibility})
+  }
+  
   render() {
     return (
       <div>
-        <Lifelines handleChange={this.handleChange}/>
-        <Trivia triviaRequest={this.triviaRequest} handleChange={this.handleChange} question={this.state.question}/>
+        <Lifelines handleChange={this.handleChange} triviaRequest={this.triviaRequest} handleClick={this.handleClick}/>
+        <Trivia triviaRequest={this.triviaRequest} handleChange={this.handleChange} question={this.state.question} hidden={this.state.visibility}/>
       </div>
     );
   }

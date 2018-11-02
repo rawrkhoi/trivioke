@@ -43,10 +43,10 @@ class Trivia extends Component {
         return answerArr;
       }
       const answers = [
-        <button type="button" onClick={() => this.props.triviaRequest()}>{escapeHtml(question.correct_answer)}</button>,
-        <button type="button">{escapeHtml(question.incorrect_answers[0])}</button>,
-        <button type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
-        <button type="button">{escapeHtml(question.incorrect_answers[2])}</button>
+        <button key="c" type="button" onClick={() => this.props.triviaRequest()}>{escapeHtml(question.correct_answer)}</button>,
+        <button key="i1" style={{ display: this.props.hidden ? 'block' : 'none' }} type="button" >{escapeHtml(question.incorrect_answers[0])}</button>,
+        <button key="i2" style={{ display: this.props.hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
+        <button key="i3" type="button">{escapeHtml(question.incorrect_answers[2])}</button>
       ];
       let shuffleArr = shuffle(answers);
       const multiChoice = [

@@ -4,24 +4,25 @@ class Lifelines extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
-
-
+    // this.handleClick = this.handleClick.bind(this)
   }
   handleChange() {
     this.setState({
     })
   }
 
-  handleSubmit() {
-
-  }
+  // handleClick() {
+  //   this.props.question.incorrect_answers.splice(2);
+  // }
 
   render() {
     return (
       <div>
         Lifelines
+        <button type="button" onClick={this.props.handleClick}>50/50</button>,
+        <button type="button" onClick={this.props.triviaRequest}>Change Question</button>,
+        <button type="button" onClick={this.props.triviaRequest}>Change Category</button>
         
       </div>
     );
