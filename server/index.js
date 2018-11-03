@@ -64,7 +64,7 @@ const createSession = (req, res, user) => {
   });
 };
 
-app.post('/signUp', (req, res) => {
+app.post('/signup', (req, res) => {
   bcrypt.hash(req.query.pw, saltRounds, (err, hash) => {
     if (err) {
       res.send(500);
