@@ -61,7 +61,6 @@ app.post('/songs', (req, res) => {
 const createSession = (req, res, user) => {
   req.session.regenerate(() => {
     req.session.user = user;
-    res.redirect('/');
   });
 };
 
@@ -87,15 +86,19 @@ const checkPassword = (req, res) => {
   const q = 'select * from users where username=?';
   const args = [req.query.name];
   db.connection.query(q, args, (err, results) => {
-    bcrypt.compare(req.query.pw, results[0].pw, (err, result) => {
-      if (result === true) {
-        console.log('passwords match');
-        createSession(req, res, req.query.name);
-      } else {
-        console.log('passwords don\'t match');
-        res.redirect('/');
-      }
-    });
+    if (err || !results) {
+      res.send(err);
+    } else {
+      bcrypt.compare(req.query.pw, results[0].pw, (error, result) => {
+        if (result === true) {
+          console.log('passwords match');
+          createSession(req, res, req.query.name);
+        } else {
+          console.log('passwords don\'t match');
+        }
+      });
+      res.send(results);
+    }
   });
 };
 

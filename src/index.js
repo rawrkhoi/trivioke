@@ -20,17 +20,19 @@ const Index = () => (
   </div>
 );
 
+const Front = () => (
+  <div>
+    Welcome to Trivioke!
+    <SignUp />
+    <Login />
+  </div>
+);
+
 const routing = (
   <Router>
     <div>
       <div>
-        <Link to="/">Home</Link>
-      </div>
-      <div>
-        <Link to="/signup">Sign Up</Link>
-      </div>
-      <div>
-        <Link to="/login">Login</Link>
+        <Link to="/">SignUp/Login</Link>
       </div>
       <div>
         <Link to="/trivia">Trivia</Link>
@@ -38,7 +40,7 @@ const routing = (
       <div>
         <Link to="/video">Karaoke</Link>
       </div>
-      <Route exact path="/" component={Index} />
+      <Route exact path="/" component={Front} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/trivia" component={Load} />

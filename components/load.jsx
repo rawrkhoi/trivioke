@@ -43,7 +43,9 @@ class Load extends Component {
   }
 
   render() {
-    const { category, diff, team1, team2 } = this.state;
+    const {
+      category, diff, team1, team2,
+    } = this.state;
     return (
       <div>
         <div key="team">
