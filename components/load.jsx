@@ -12,20 +12,17 @@ class Load extends Component {
     this.state = {
       diff: 'medium',
       category: 9,
-      teams: {
-        team1: '',
-        team2: '',
-      },
+      trivia: false,
       team1: '',
       team2: '',
     };
+    this.begin = this.begin.bind(this);
     this.handeleClick = this.handeleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // Code is invoked after the component is mounted/inserted into the DOM tree.
-  componentDidMount() {
-
+  begin() {
+    this.setState({ trivia: true });
   }
 
   handeleClick() {
@@ -35,8 +32,6 @@ class Load extends Component {
   }
 
   handleChange() {
-    // const { name, value } = e.target
-    // this.setState(state => ({ [name]: ...state[name], value }))
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -44,27 +39,31 @@ class Load extends Component {
 
   render() {
     const {
-      category, diff, team1, team2,
+      category, diff, team1, team2, trivia,
     } = this.state;
+    if (!trivia) {
+      return (
+        <div>
+          <div key="team">
+            <Team handleChange={this.handleChange} />
+          </div>
+          <div key="filters">
+            <Filters click={this.handeleClick} />
+          </div>
+          <div key="diff">
+            <button type="button" name="diff" id="easy" onClick={this.handeleClick}>Easy</button>
+            <button type="button" name="diff" id="medium" onClick={this.handeleClick}>Medium</button>
+            <button type="button" name="diff" id="hard" onClick={this.handeleClick}>Hard</button>
+          </div>
+          <div key="begin">
+            <button type="button" onClick={this.begin}>Begin Game</button>
+          </div>
+        </div>
+      );
+    }
     return (
-      <div>
-        <div key="team">
-          <Team handleChange={this.handleChange} />
-        </div>
-        <div key="filters">
-          <Filters click={this.handeleClick} />
-        </div>
-        <div key="diff">
-          <button type="button" name="diff" id="easy" onClick={this.handeleClick}>Easy</button>
-          <button type="button" name="diff" id="medium" onClick={this.handeleClick}>Medium</button>
-          <button type="button" name="diff" id="hard" onClick={this.handeleClick}>Hard</button>
-        </div>
-        <div key="begin">
-          <button type="button">Begin Game</button>
-        </div>
-        <div key="game">
-          <Game category={category} diff={diff} name1={team1} name2={team2} />
-        </div>
+      <div key="game">
+        <Game category={category} diff={diff} name1={team1} name2={team2} />
       </div>
     );
   }
