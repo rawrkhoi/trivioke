@@ -41,7 +41,18 @@ class Game extends React.Component {
   // this.setState({ someProperty: { ...this.state.someProperty, flag: false } });
 
   increaseScore() {
-    this.setState(prevState => ({ team1: prevState.team1 + 1 }));
+    const { currTeam } = this.state;
+    if (currTeam === 'team1') {
+      this.setState(prevState => ({
+        team1: prevState.team1 + 1,
+        visibility: true,
+      }));
+    } else {
+      this.setState(prevState => ({
+        team2: prevState.team2 + 1,
+        visibility: true,
+      }));
+    }
   }
 
   componentDidMount() {

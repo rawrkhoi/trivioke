@@ -34,32 +34,6 @@ class Table extends Component {
             />
           </FormGroup>
         </form>
-        <form>
-          <FormGroup
-            controlId="formBasicText"
-          >
-            <ControlLabel>Team 3 Name</ControlLabel>
-            <FormControl
-              type="text"
-              name="team3"
-              placeholder="Enter text"
-              onChange={handleChange}
-            />
-          </FormGroup>
-        </form>
-        <form>
-          <FormGroup
-            controlId="formBasicText"
-          >
-            <ControlLabel>Team 4 Name</ControlLabel>
-            <FormControl
-              type="text"
-              name="team4"
-              placeholder="Enter text"
-              onChange={handleChange}
-            />
-          </FormGroup>
-        </form>
       </div>
     );
   }
