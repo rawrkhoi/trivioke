@@ -25,7 +25,7 @@ class Login extends React.Component {
   handleSubmit() {
     const loginInfo = this.state;
     axios({ method: 'get', url: 'http://localhost:8080/login', params: loginInfo })
-      .then((response) => {
+      .then(() => {
         this.setState({ redirect: true });
       })
       .catch(err => console.log(err));
@@ -38,14 +38,10 @@ class Login extends React.Component {
         <div>
           Login
           <div>
-            <label>
-                  Username:
-              <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-            <label>
-                  Password:
-              <input type="text" name="pw" onChange={this.handleChange} />
-            </label>
+            Username:
+            <input type="text" name="name" onChange={this.handleChange} />
+            Password:
+            <input type="text" name="pw" onChange={this.handleChange} />
             <input type="submit" value="Submit" onClick={this.handleSubmit} />
           </div>
         </div>
