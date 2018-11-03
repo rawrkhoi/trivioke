@@ -12,6 +12,10 @@ class Load extends Component {
     this.state = {
       diff: 'medium',
       category: 9,
+      teams: {
+        team1: '',
+        team2: '',
+      },
       team1: '',
       team2: '',
     };
@@ -31,6 +35,8 @@ class Load extends Component {
   }
 
   handleChange() {
+    // const { name, value } = e.target
+    // this.setState(state => ({ [name]: ...state[name], value }))
     this.setState({
       [event.target.name]: event.target.value,
     });

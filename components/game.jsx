@@ -14,6 +14,7 @@ class Game extends React.Component {
       visibility: true,
       question: null,
       currTeam: 'team1',
+      
       team1: 0,
       team2: 0,
     };
