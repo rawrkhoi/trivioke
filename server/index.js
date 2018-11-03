@@ -93,11 +93,13 @@ const checkPassword = (req, res) => {
         if (result === true) {
           console.log('passwords match');
           createSession(req, res, req.query.name);
+          res.send(200);
         } else {
           console.log('passwords don\'t match');
+          res.send(404);
+          res.end();
         }
       });
-      res.send(results);
     }
   });
 };

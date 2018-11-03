@@ -18,6 +18,7 @@ class VideoPlayer extends React.Component {
   componentDidMount() {
     axios({ method: 'GET', url: '/songs', headers: { 'Access-Control-Allow-Origin': '*' } })
       .then((res) => {
+        console.log(res);
         this.setState({
           video: res.data[3],
           videos: res.data,

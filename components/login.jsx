@@ -27,6 +27,16 @@ class Login extends React.Component {
   //   </Router>;
   // }
 
+  // updateRoute() {
+  //   return (
+  //     <Router>
+  //       <Route exact path="/login" render={() => this.state.redirect ? (
+  //         <Redirect to="/trivia" /> ) : (
+  //         <Redirect to="/login" /> )}/>
+  //     </Router>
+  //   );
+  // }
+
   handleChange() {
     this.setState({
       [event.target.name]: event.target.value,
@@ -35,12 +45,12 @@ class Login extends React.Component {
 
   handleSubmit() {
     const loginInfo = this.state;
-    axios({ method: 'GET', url: '/login', params: loginInfo })
+    axios({ method: 'get', url: 'http://localhost:8080/login', params: loginInfo })
       .then((response) => {
-        console.log(response);
+        // console.log('got back');
         this.setState({ redirect: true });
       })
-      .catch((err) => { console.log(err); });
+      .catch((err) => console.log(err))
   }
 
   render() {
@@ -50,17 +60,15 @@ class Login extends React.Component {
         <div>
           Login
           <div>
-            <form>
-              <label>
+            <label>
                   Username:
-                <input type="text" name="name" onChange={this.handleChange} />
+              <input type="text" name="name" onChange={this.handleChange} />
               </label>
-              <label>
+                <label>
                   Password:
-                <input type="text" name="pw" onChange={this.handleChange} />
-              </label>
-              <input type="submit" value="Submit" onClick={this.handleSubmit} />
-            </form>
+                  <input type="text" name="pw" onChange={this.handleChange} />
+                </label>
+            <input type="submit" value="Submit" onClick={this.handleSubmit} />
           </div>
         </div>
       );
