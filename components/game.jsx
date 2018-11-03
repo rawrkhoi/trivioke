@@ -5,6 +5,7 @@
 import React from 'react';
 import Lifelines from './lifelines.jsx';
 import Trivia from './trivia.jsx';
+import Scoreboard from './scoreBoard.jsx';
 
 class Game extends React.Component {
   constructor(props) {
@@ -12,17 +13,15 @@ class Game extends React.Component {
     this.state = {
       visibility: true,
       question: null,
-      currTeam: null,
-      teams: {
-        team1: [],
-        team2: [],
-        team3: [],
-        team4: [],
-      },
+      currTeam: 'team1',
+      
+      team1: 0,
+      team2: 0,
     };
     this.triviaRequest = this.triviaRequest.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.nextTeam = this.nextTeam.bind(this);
+    this.increaseScore = this.increaseScore.bind(this);
   }
 
   triviaRequest() {
@@ -34,13 +33,19 @@ class Game extends React.Component {
       .catch((err) => { console.error(err); });
   }
 
-  componentDidMount() {
-    this.triviaRequest();
+  nextTeam() {
+    const { currTeam } = this.state;
+    return currTeam === 'team1' ? this.setState({ currTeam: 'team2' }) : this.setState({ currTeam: 'team1' });
   }
 
-  handleChange() {
-    this.setState({
-    });
+  // this.setState({ someProperty: { ...this.state.someProperty, flag: false } });
+
+  increaseScore() {
+    this.setState(prevState => ({ team1: prevState.team1 + 1 }));
+  }
+
+  componentDidMount() {
+    this.triviaRequest();
   }
 
   handleClick() {
@@ -49,7 +54,10 @@ class Game extends React.Component {
   }
 
   render() {
-    const { question, visibility } = this.state;
+    const {
+      question, visibility, currTeam, team1, team2,
+    } = this.state;
+    const { name1, name2 } = this.props;
     return (
       <div>
         <Lifelines
@@ -62,7 +70,10 @@ class Game extends React.Component {
           handleChange={this.handleChange}
           question={question}
           hidden={visibility}
+          nextTeam={this.nextTeam}
+          increaseScore={this.increaseScore}
         />
+        <Scoreboard currTeam={currTeam} team1={team1} team2={team2} name1={name1} name2={name2} />
       </div>
     );
   }

@@ -11,7 +11,9 @@ class Trivia extends Component {
   }
 
   render() {
-    const { question, triviaRequest, hidden } = this.props;
+    const {
+      question, triviaRequest, hidden, nextTeam, increaseScore
+    } = this.props;
     function escapeHtml(text) {
       return text
         .replace(/&amp;/g, '&')
@@ -33,7 +35,7 @@ class Trivia extends Component {
     }
     if (question) {
       const answers = [
-        <button key="c" type="button" onClick={() => triviaRequest()}>{escapeHtml(question.correct_answer)}</button>,
+        <button key="c" type="button" onClick={() => { triviaRequest(); nextTeam(); increaseScore(); }}>{escapeHtml(question.correct_answer)}</button>,
         <button key="i1" style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[0])}</button>,
         <button key="i2" style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
         <button key="i3" type="button">{escapeHtml(question.incorrect_answers[2])}</button>,

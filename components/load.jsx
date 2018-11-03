@@ -12,10 +12,12 @@ class Load extends Component {
     this.state = {
       diff: 'medium',
       category: 9,
+      teams: {
+        team1: '',
+        team2: '',
+      },
       team1: '',
       team2: '',
-      team3: '',
-      team4: '',
     };
     this.handeleClick = this.handeleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -33,13 +35,15 @@ class Load extends Component {
   }
 
   handleChange() {
+    // const { name, value } = e.target
+    // this.setState(state => ({ [name]: ...state[name], value }))
     this.setState({
       [event.target.name]: event.target.value,
     });
   }
 
   render() {
-    const { category, diff } = this.state;
+    const { category, diff, team1, team2 } = this.state;
     return (
       <div>
         <div key="team">
@@ -57,7 +61,7 @@ class Load extends Component {
           <button type="button">Begin Game</button>
         </div>
         <div key="game">
-          <Game category={category} diff={diff} />
+          <Game category={category} diff={diff} name1={team1} name2={team2} />
         </div>
       </div>
     );
