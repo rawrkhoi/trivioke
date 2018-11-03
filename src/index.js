@@ -23,21 +23,26 @@ const Index = () => (
 const routing = (
   <Router>
     <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/signup/">SignUp</Link>
-        </li>
-        <li>
-          <Link to="/video">VideoPlayer</Link>
-        </li>
-      </ul>
-      <Route path="/" component={Index} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/login" component={Login} />
-      <Route path="/video" component={VideoPlayer} />
+      <div>
+        <Link to="/">Home</Link>
+      </div>
+      <div>
+        <Link to="/signup">Sign Up</Link>
+      </div>
+      <div>
+        <Link to="/login">Login</Link>
+      </div>
+      <div>
+        <Link to="/trivia">Trivia</Link>
+      </div>
+      <div>
+        <Link to="/video">Karaoke</Link>
+      </div>
+      <Route exact path="/" component={Index} />
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/login" component={Login} />
+      <Route exact path="/trivia" component={Load} />
+      <Route exact path="/video" component={VideoPlayer} />
     </div>
   </Router>
 );
