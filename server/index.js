@@ -13,7 +13,13 @@ const saltRounds = 10;
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, '../dist')));
+
+app.use(express.static(`${__dirname}/../build`));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
+
+// app.use(express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
   secret: 'supersecret',
