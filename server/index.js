@@ -108,7 +108,7 @@ app.get('/login', (req, res) => {
   checkPassword(req, res);
 });
 
-const port = process.env.PORT || 8080;
-app.listen(port, () => {
-  console.log(`listening on port ${port}`);
+const port = 8080;
+app.listen(process.env.PORT || port, () => {
+  console.log(`listening on port ${process.env.PORT || port}`);
 });
