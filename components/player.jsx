@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Iframe from 'react-iframe';
+import Game from './game.jsx'
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -37,6 +38,10 @@ class VideoPlayer extends React.Component {
     });
   }
 
+  goBack() {
+
+  }
+
   render() {
     const { video } = this.state;
     return (
@@ -52,6 +57,7 @@ class VideoPlayer extends React.Component {
           height="350px"
           allowFullScreen
         />
+        <button onClick={this.goBack} type="button"> Return to Game </button>
       </div>
     );
   }
