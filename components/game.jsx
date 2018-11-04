@@ -28,8 +28,8 @@ class Game extends React.Component {
 
   triviaRequest() {
     // grab info from session storage
-    const { category, diff } = this.props;
-    const url = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${diff}&type=multiple`;
+    // const { category, diff } = this.props;
+    const url = `https://opentdb.com/api.php?amount=1&category=${sessionStorage.category}&difficulty=${sessionStorage.diff}&type=multiple`;
     fetch(url)
       .then(res => res.json())
       .then(data => this.setState({ question: data.results[0] }))

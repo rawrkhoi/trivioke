@@ -22,6 +22,13 @@ class Load extends Component {
   }
 
   begin() {
+    const {
+      diff, category, team1, team2,
+    } = this.state;
+    sessionStorage.setItem('diff', diff);
+    sessionStorage.setItem('category', category);
+    sessionStorage.setItem('team1', team1);
+    sessionStorage.setItem('team2', team2);
     this.setState({ trivia: true });
   }
 
