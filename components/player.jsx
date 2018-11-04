@@ -2,8 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import Iframe from 'react-iframe';
-import { Link, Route } from 'react-router-dom';
-import Game from './game.jsx';
+import { Link } from 'react-router-dom';
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -55,9 +54,8 @@ class VideoPlayer extends React.Component {
           allowFullScreen
         />
         <button type="button">
-          <Link to="/trivia">Game</Link>
+          <Link to="/game">Game</Link>
         </button>
-        <Route exact path="/trivia" component={Game} />
       </div>
     );
   }

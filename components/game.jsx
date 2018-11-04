@@ -50,13 +50,13 @@ class Game extends React.Component {
         team1: prevState.team1 + 1,
         visibility: true,
       }));
-      sessionStorage.setItem('score1', team1);
+      // sessionStorage.setItem('score1', team1);
     } else {
       this.setState(prevState => ({
         team2: prevState.team2 + 1,
         visibility: true,
       }));
-      sessionStorage.setItem('score2', team2);
+      // sessionStorage.setItem('score2', team2);
     }
   }
 
