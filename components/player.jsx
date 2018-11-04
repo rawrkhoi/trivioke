@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import Iframe from 'react-iframe';
+import { BrowserRouter, Link, Route, withRouter } from 'react-router-dom';
+import Game from './game.jsx';
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -13,11 +15,13 @@ class VideoPlayer extends React.Component {
       },
     };
     this.changeVideo = this.changeVideo.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   componentDidMount() {
     axios({ method: 'GET', url: '/songs', headers: { 'Access-Control-Allow-Origin': '*' } })
       .then((res) => {
+        console.log(res);
         this.setState({
           video: res.data[3],
           videos: res.data,
@@ -36,6 +40,10 @@ class VideoPlayer extends React.Component {
     });
   }
 
+  goBack() {
+
+  }
+
   render() {
     const { video } = this.state;
     return (
@@ -51,6 +59,11 @@ class VideoPlayer extends React.Component {
           height="350px"
           allowFullScreen
         />
+        <button type="button">
+          <Link to="/game">Game</Link>
+        </button>
+        <Route exact path="/game" component={Game} />
+
       </div>
     );
   }

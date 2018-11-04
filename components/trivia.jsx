@@ -12,7 +12,7 @@ class Trivia extends Component {
 
   render() {
     const {
-      question, triviaRequest, hidden, nextTeam, increaseScore
+      question, triviaRequest, hidden, nextTeam, increaseScore, trigger,
     } = this.props;
     function escapeHtml(text) {
       return text
@@ -36,9 +36,9 @@ class Trivia extends Component {
     if (question) {
       const answers = [
         <button key="c" type="button" onClick={() => { triviaRequest(); nextTeam(); increaseScore(); }}>{escapeHtml(question.correct_answer)}</button>,
-        <button key="i1" style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[0])}</button>,
-        <button key="i2" style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
-        <button key="i3" type="button">{escapeHtml(question.incorrect_answers[2])}</button>,
+        <button key="i1" onClick={trigger} style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[0])}</button>,
+        <button key="i2" onClick={trigger} style={{ display: hidden ? 'block' : 'none' }} type="button">{escapeHtml(question.incorrect_answers[1])}</button>,
+        <button key="i3" onClick={trigger} type="button">{escapeHtml(question.incorrect_answers[2])}</button>,
       ];
       const shuffleArr = shuffle(answers);
       const multiChoice = [

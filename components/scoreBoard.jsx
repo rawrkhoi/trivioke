@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 class Scoreboard extends React.Component {
@@ -15,7 +16,9 @@ class Scoreboard extends React.Component {
   }
 
   render() {
-    const { currTeam, teams, team1, team2, name1, name2 } = this.props;
+    const {
+      currTeam, teams, team1, team2, name1, name2,
+    } = this.props;
     return (
       <div>
         <div>Scoreboard</div>

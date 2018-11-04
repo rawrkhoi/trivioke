@@ -2,11 +2,13 @@
 /* eslint-disable no-restricted-globals */
 import React from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
 class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      redirect: false,
       name: '',
       pw: '',
     };
@@ -22,24 +24,32 @@ class Login extends React.Component {
 
   handleSubmit() {
     const loginInfo = this.state;
-    axios({ method: 'GET', url: '/login', params: loginInfo });
+    axios({ method: 'get', url: 'http://localhost:8080/login', params: loginInfo })
+      .then(() => {
+        this.setState({ redirect: true });
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
-    return (
-      <div>
+    const { redirect } = this.state;
+    if (!redirect) {
+      return (
+        <div>
           Login
-        <form>
-          <label>
+          <div>
             Username:
             <input type="text" name="name" onChange={this.handleChange} />
-          </label>
-          <label>
             Password:
             <input type="text" name="pw" onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" onClick={this.handleSubmit} />
-        </form>
+            <input type="submit" value="Submit" onClick={this.handleSubmit} />
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div>
+        <Redirect to="/trivia" />
       </div>
     );
   }

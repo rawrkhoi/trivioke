@@ -6,15 +6,16 @@ import React from 'react';
 import Lifelines from './lifelines.jsx';
 import Trivia from './trivia.jsx';
 import Scoreboard from './scoreBoard.jsx';
+import VideoPlayer from './player.jsx';
 
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      video: false,
       visibility: true,
       question: null,
       currTeam: 'team1',
-      
       team1: 0,
       team2: 0,
     };
@@ -22,11 +23,13 @@ class Game extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.nextTeam = this.nextTeam.bind(this);
     this.increaseScore = this.increaseScore.bind(this);
+    this.triggerVideo = this.triggerVideo.bind(this);
   }
 
   triviaRequest() {
-    const { category, diff } = this.props;
-    const url = `https://opentdb.com/api.php?amount=1&category=${category}&difficulty=${diff}&type=multiple`;
+    // grab info from session storage
+    // const { category, diff } = this.props;
+    const url = `https://opentdb.com/api.php?amount=1&category=${sessionStorage.category}&difficulty=${sessionStorage.diff}&type=multiple`;
     fetch(url)
       .then(res => res.json())
       .then(data => this.setState({ question: data.results[0] }))
@@ -38,10 +41,23 @@ class Game extends React.Component {
     return currTeam === 'team1' ? this.setState({ currTeam: 'team2' }) : this.setState({ currTeam: 'team1' });
   }
 
-  // this.setState({ someProperty: { ...this.state.someProperty, flag: false } });
+  triggerVideo() {
+    this.setState(prevState => ({ video: !prevState.video }));
+  }
 
   increaseScore() {
-    this.setState(prevState => ({ team1: prevState.team1 + 1 }));
+    const { currTeam } = this.state;
+    if (currTeam === 'team1') {
+      this.setState(prevState => ({
+        team1: prevState.team1 + 1,
+        visibility: true,
+      }));
+    } else {
+      this.setState(prevState => ({
+        team2: prevState.team2 + 1,
+        visibility: true,
+      }));
+    }
   }
 
   componentDidMount() {
@@ -55,26 +71,32 @@ class Game extends React.Component {
 
   render() {
     const {
-      question, visibility, currTeam, team1, team2,
+      question, visibility, currTeam, team1, team2, video,
     } = this.state;
     const { name1, name2 } = this.props;
+    if (!video) {
+      return (
+        <div>
+          <Lifelines
+            handleChange={this.handleChange}
+            triviaRequest={this.triviaRequest}
+            handleClick={this.handleClick}
+          />
+          <Trivia
+            triviaRequest={this.triviaRequest}
+            handleChange={this.handleChange}
+            question={question}
+            hidden={visibility}
+            nextTeam={this.nextTeam}
+            increaseScore={this.increaseScore}
+            trigger={this.triggerVideo}
+          />
+          <Scoreboard currTeam={currTeam} team1={team1} team2={team2} name1={name1} name2={name2} />
+        </div>
+      );
+    }
     return (
-      <div>
-        <Lifelines
-          handleChange={this.handleChange}
-          triviaRequest={this.triviaRequest}
-          handleClick={this.handleClick}
-        />
-        <Trivia
-          triviaRequest={this.triviaRequest}
-          handleChange={this.handleChange}
-          question={question}
-          hidden={visibility}
-          nextTeam={this.nextTeam}
-          increaseScore={this.increaseScore}
-        />
-        <Scoreboard currTeam={currTeam} team1={team1} team2={team2} name1={name1} name2={name2} />
-      </div>
+      <VideoPlayer />
     );
   }
 }
