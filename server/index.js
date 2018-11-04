@@ -14,6 +14,10 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.configure(() => {
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+});
+
 app.use(express.static(`${__dirname}/../build`));
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
