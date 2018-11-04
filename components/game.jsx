@@ -27,8 +27,6 @@ class Game extends React.Component {
   }
 
   triviaRequest() {
-    // grab info from session storage
-    // const { category, diff } = this.props;
     const url = `https://opentdb.com/api.php?amount=1&category=${sessionStorage.category}&difficulty=${sessionStorage.diff}&type=multiple`;
     fetch(url)
       .then(res => res.json())
@@ -46,17 +44,19 @@ class Game extends React.Component {
   }
 
   increaseScore() {
-    const { currTeam } = this.state;
+    const { currTeam, team1, team2 } = this.state;
     if (currTeam === 'team1') {
       this.setState(prevState => ({
         team1: prevState.team1 + 1,
         visibility: true,
       }));
+      sessionStorage.setItem('score1', team1);
     } else {
       this.setState(prevState => ({
         team2: prevState.team2 + 1,
         visibility: true,
       }));
+      sessionStorage.setItem('score2', team2);
     }
   }
 
