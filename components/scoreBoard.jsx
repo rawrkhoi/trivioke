@@ -14,7 +14,10 @@ class Scoreboard extends React.Component {
     return (
       <div>
         <div>Scoreboard</div>
-        <table width="400px" className="table">
+        <table
+          className="table"
+          style={{ width: '400px' }}
+        >
           <thead>
             <tr>
               <th scope="col">Team</th>
@@ -22,11 +25,11 @@ class Scoreboard extends React.Component {
             </tr>
           </thead>
           <tbody>
-            <tr id="team1" style={{ background: currTeam === 'team1' ? 'red' : 'white' }}>
+            <tr id="team1" style={{ background: currTeam === 'team1' ? 'green' : 'transparent' }}>
               <td>{sessionStorage.team1}</td>
               <td>{sessionStorage.score1}</td>
             </tr>
-            <tr id="team2" style={{ background: currTeam === 'team2' ? 'red' : 'white' }}>
+            <tr id="team2" style={{ background: currTeam === 'team2' ? 'green' : 'transparent' }}>
               <td>{sessionStorage.team2}</td>
               <td>{sessionStorage.score2}</td>
             </tr>

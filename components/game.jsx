@@ -32,7 +32,7 @@ class Game extends React.Component {
     fetch(url)
       .then(res => res.json())
       .then(data => this.setState({ question: data.results[0] }))
-      .catch((err) => { console.error(err); });  
+      .catch((err) => { console.error(err); });
   }
 
   changeCat() {
@@ -92,24 +92,32 @@ class Game extends React.Component {
     const { name1, name2 } = this.props;
     if (!video) {
       return (
-        <div>
-          <Lifelines
-            handleChange={this.handleChange}
-            triviaRequest={this.triviaRequest}
-            handleClick={this.handleClick}
-            changeCat={this.changeCat}
-          />
-          <Trivia
-            triviaRequest={this.triviaRequest}
-            handleChange={this.handleChange}
-            question={question}
-            hidden={visibility}
-            nextTeam={this.nextTeam}
-            increaseScore={this.increaseScore}
-            trigger={this.triggerVideo}
-          />
-          <Scoreboard currTeam={currTeam} team1={team1} team2={team2} name1={name1} name2={name2} />
-        </div>
+        <center>
+          <div>
+            <Lifelines
+              handleChange={this.handleChange}
+              triviaRequest={this.triviaRequest}
+              handleClick={this.handleClick}
+              changeCat={this.changeCat}
+            />
+            <Trivia
+              triviaRequest={this.triviaRequest}
+              handleChange={this.handleChange}
+              question={question}
+              hidden={visibility}
+              nextTeam={this.nextTeam}
+              increaseScore={this.increaseScore}
+              trigger={this.triggerVideo}
+            />
+            <Scoreboard
+              currTeam={currTeam}
+              team1={team1}
+              team2={team2}
+              name1={name1}
+              name2={name2}
+            />
+          </div>
+        </center>
       );
     }
     return (

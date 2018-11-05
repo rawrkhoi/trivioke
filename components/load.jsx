@@ -52,31 +52,29 @@ class Load extends Component {
     } = this.state;
     if (!trivia) {
       return (
-        <div>
-          <div key="team">
-            <Team handleChange={this.handleChange} />
+        <center>
+          <div>
+            <div key="team">
+              <Team handleChange={this.handleChange} />
+            </div>
+            <div key="filters">
+              <Filters click={this.handeleClick} />
+            </div>
+            <div key="diff">
+              <button type="button" name="diff" id="easy" onClick={this.handeleClick}>Easy</button>
+              <button type="button" name="diff" id="medium" onClick={this.handeleClick}>Medium</button>
+              <button type="button" name="diff" id="hard" onClick={this.handeleClick}>Hard</button>
+            </div>
+            <div key="begin">
+              <button type="button" onClick={this.begin}>Begin Game</button>
+            </div>
           </div>
-          <div key="filters">
-            <Filters click={this.handeleClick} />
-          </div>
-          <div key="diff">
-            <button type="button" name="diff" id="easy" onClick={this.handeleClick}>Easy</button>
-            <button type="button" name="diff" id="medium" onClick={this.handeleClick}>Medium</button>
-            <button type="button" name="diff" id="hard" onClick={this.handeleClick}>Hard</button>
-          </div>
-          <div key="begin">
-            <button type="button" onClick={this.begin}>Begin Game</button>
-          </div>
-        </div>
+        </center>
+
       );
     }
     return (
-      <div
-        key="game"
-        style={{
-          display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh',
-        }}
-      >
+      <div>
         <Game category={category} diff={diff} name1={team1} name2={team2} />
       </div>
     );
