@@ -58,7 +58,7 @@ class VideoPlayer extends React.Component {
               justifyContent: 'center', alignItems: 'center', height: '3vh',
             }}
           >
-            <Link to="/game">Game</Link>
+            <Link to="/game">Trivia</Link>
           </button>
           <Iframe
             fluid="true"
