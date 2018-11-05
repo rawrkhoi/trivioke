@@ -22,18 +22,14 @@ const routing = (
   <Router>
     <div>
       <div>
-        <img src="/logo.png" alt="logo" />
         <Link to="/">SignUp/Login</Link>
       </div>
-<<<<<<< HEAD
-=======
       <center>
         <img
           src="/logo.png"
           alt="logo"
         />
       </center>
->>>>>>> eebd482c33b908cc9072a018ee14eade9c4437e0
       <Route exact path="/" component={Front} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/login" component={Login} />

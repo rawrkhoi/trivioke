@@ -10,7 +10,7 @@ class Scoreboard extends React.Component {
   }
 
   render() {
-    const { currTeam, team1, team2 } = this.props;
+    const { currTeam } = this.props;
     return (
       <div>
         <div>Scoreboard</div>
