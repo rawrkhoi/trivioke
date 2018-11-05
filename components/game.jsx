@@ -60,14 +60,16 @@ class Game extends React.Component {
   increaseScore() {
     const { currTeam, team1, team2 } = this.state;
     if (currTeam === 'team1') {
+      sessionStorage.setItem('score1', (Number(sessionStorage.score1) + 1));
       this.setState(prevState => ({
-        team1: prevState.team1 + 1,
+        // team1: prevState.team1 + 1,
         visibility: true,
       }));
       // sessionStorage.setItem('score1', team1);
     } else {
+      sessionStorage.setItem('score2', (Number(sessionStorage.score2) + 1));
       this.setState(prevState => ({
-        team2: prevState.team2 + 1,
+        // team2: prevState.team2 + 1,
         visibility: true,
       }));
       // sessionStorage.setItem('score2', team2);

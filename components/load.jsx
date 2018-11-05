@@ -29,6 +29,8 @@ class Load extends Component {
     sessionStorage.setItem('category', category);
     sessionStorage.setItem('team1', team1);
     sessionStorage.setItem('team2', team2);
+    sessionStorage.setItem('score1', 0);
+    sessionStorage.setItem('score2', 0);
     this.setState({ trivia: true });
   }
 

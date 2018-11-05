@@ -24,13 +24,11 @@ const routing = (
       <div>
         <Link to="/">SignUp/Login</Link>
       </div>
-      <div>
-        <Link to="/trivia">Trivia</Link>
-      </div>
-      <img
+      <center><img
         src="/logo.png"
         alt="logo"
-      />
+      /></center>
+      
       <Route exact path="/" component={Front} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/login" component={Login} />
