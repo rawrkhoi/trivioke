@@ -68,17 +68,22 @@ const createSession = (req, res, user) => {
 
 app.post('/signup', (req, res) => {
   bcrypt.hash(req.query.pw, saltRounds, (err, hash) => {
-    if (err) {
-      res.send(500);
+    if (err || !hash) {
+      res.sendStatus(500).send('signuperror');
       console.log(err);
     } else {
       const q = 'insert into users(username, pw) values(?, ?)';
       const args = [req.query.name, hash];
-      db.connection.query(q, args);
-      createSession(req, res, req.query.name);
-      console.log(req.session);
-      res.end();
-      console.log('user added to db');
+      db.connection.query(q, args, (error, results) => {
+        if (error) {
+          res.send(500);
+        } else {
+          createSession(req, res, req.query.name);
+          console.log(req.session);
+          res.end();
+          console.log('user added to db');
+        }
+      });
     }
   });
 });

@@ -10,7 +10,7 @@ class Scoreboard extends React.Component {
   }
 
   render() {
-    const { currTeam, team1, team2 } = this.props;
+    const { currTeam } = this.props;
     return (
       <div>
         <div>Scoreboard</div>
@@ -27,11 +27,11 @@ class Scoreboard extends React.Component {
           <tbody>
             <tr id="team1" style={{ background: currTeam === 'team1' ? 'green' : 'transparent' }}>
               <td>{sessionStorage.team1}</td>
-              <td>{team1}</td>
+              <td>{sessionStorage.score1}</td>
             </tr>
             <tr id="team2" style={{ background: currTeam === 'team2' ? 'green' : 'transparent' }}>
               <td>{sessionStorage.team2}</td>
-              <td>{team2}</td>
+              <td>{sessionStorage.score2}</td>
             </tr>
           </tbody>
         </table>
