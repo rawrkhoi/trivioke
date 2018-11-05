@@ -12,7 +12,7 @@ class Lifelines extends React.Component {
     const { handleClick, triviaRequest, changeCat } = this.props;
     return (
       <div>
-        <div>Lifelines</div>
+        <h4>Lifelines</h4>
         <table style={{
           width: '400px', display: 'flex', justifyContent: 'center', alignItems: 'center',
         }}
