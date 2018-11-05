@@ -24,9 +24,6 @@ const routing = (
       <div>
         <Link to="/">SignUp/Login</Link>
       </div>
-      <div>
-        <Link to="/trivia">Trivia</Link>
-      </div>
       <center>
         <img
           src="/logo.png"
