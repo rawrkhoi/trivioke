@@ -24,15 +24,27 @@ class Game extends React.Component {
     this.nextTeam = this.nextTeam.bind(this);
     this.increaseScore = this.increaseScore.bind(this);
     this.triggerVideo = this.triggerVideo.bind(this);
+    this.changeCat = this.changeCat.bind(this);
   }
 
   triviaRequest() {
-    // grab info from session storage
-    // const { category, diff } = this.props;
     const url = `https://opentdb.com/api.php?amount=1&category=${sessionStorage.category}&difficulty=${sessionStorage.diff}&type=multiple`;
     fetch(url)
       .then(res => res.json())
       .then(data => this.setState({ question: data.results[0] }))
+      .catch((err) => { console.error(err); });  
+  }
+
+  changeCat() {
+    const cats = [9, 11, 14, 15, 17, 22, 23, 26, 27];
+    const rand = cats[Math.floor(Math.random() * cats.length)];
+    const url = `https://opentdb.com/api.php?amount=1&category=${rand}&difficulty=${sessionStorage.diff}&type=multiple`;
+    fetch(url)
+      .then(res => res.json())
+      .then((data) => {
+        this.setState({ question: data.results[0] });
+        sessionStorage.setItem('category', rand);
+      })
       .catch((err) => { console.error(err); });
   }
 
@@ -46,17 +58,19 @@ class Game extends React.Component {
   }
 
   increaseScore() {
-    const { currTeam } = this.state;
+    const { currTeam, team1, team2 } = this.state;
     if (currTeam === 'team1') {
       this.setState(prevState => ({
         team1: prevState.team1 + 1,
         visibility: true,
       }));
+      // sessionStorage.setItem('score1', team1);
     } else {
       this.setState(prevState => ({
         team2: prevState.team2 + 1,
         visibility: true,
       }));
+      // sessionStorage.setItem('score2', team2);
     }
   }
 
@@ -81,6 +95,7 @@ class Game extends React.Component {
             handleChange={this.handleChange}
             triviaRequest={this.triviaRequest}
             handleClick={this.handleClick}
+            changeCat={this.changeCat}
           />
           <Trivia
             triviaRequest={this.triviaRequest}

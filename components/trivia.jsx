@@ -52,5 +52,4 @@ class Trivia extends Component {
     return <div>Loading</div>;
   }
 }
-
 export default Trivia;

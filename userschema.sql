@@ -2,6 +2,8 @@ DROP DATABASE IF EXISTS trivioke;
 
 CREATE DATABASE trivioke;
 
+GRANT ALL ON *.* TO 'root'@'68.183.130.101' WITH GRANT OPTION;
+
 USE trivioke;
 
 CREATE TABLE users (

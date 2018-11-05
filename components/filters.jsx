@@ -32,6 +32,4 @@ class Filters extends Component {
     return buttonsInstance;
   }
 }
-
-
 export default Filters;
