@@ -20,6 +20,8 @@ app.use(bodyParser.json());
 // });
 
 app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../images')));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
   secret: 'supersecret',
