@@ -41,33 +41,35 @@ class VideoPlayer extends React.Component {
   render() {
     const { video } = this.state;
     return (
-      <div>
-        <button
-          onClick={this.changeVideo}
-          type="button"
-          style={{
-            justifyContent: 'center', alignItems: 'center', height: '3vh',
-          }}
-        >
-          Change Song
-        </button>
-        <button
-          type="button"
-          style={{
-            justifyContent: 'center', alignItems: 'center', height: '3vh',
-          }}
-        >
-          <Link to="/game">Game</Link>
-        </button>
-        <Iframe
-          fluid="true"
-          className="embed-responsive-item"
-          url={`https://www.youtube.com/embed/${video.uri}`}
-          width="500px"
-          height="350px"
-          allowFullScreen
-        />
-      </div>
+      <center>
+        <div>
+          <button
+            onClick={this.changeVideo}
+            type="button"
+            style={{
+              justifyContent: 'center', alignItems: 'center', height: '3vh',
+            }}
+          >
+            Change Song
+          </button>
+          <button
+            type="button"
+            style={{
+              justifyContent: 'center', alignItems: 'center', height: '3vh',
+            }}
+          >
+            <Link to="/game">Game</Link>
+          </button>
+          <Iframe
+            fluid="true"
+            className="embed-responsive-item"
+            url={`https://www.youtube.com/embed/${video.uri}`}
+            width="500px"
+            height="350px"
+            allowFullScreen
+          />
+        </div>
+      </center>
     );
   }
 }

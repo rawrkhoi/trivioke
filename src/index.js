@@ -27,10 +27,12 @@ const routing = (
       <div>
         <Link to="/trivia">Trivia</Link>
       </div>
-      <img
-        src="/logo.png"
-        alt="logo"
-      />
+      <center>
+        <img
+          src="/logo.png"
+          alt="logo"
+        />
+      </center>
       <Route exact path="/" component={Front} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/login" component={Login} />
