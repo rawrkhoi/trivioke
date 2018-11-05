@@ -8,23 +8,14 @@ import SignUp from '../components/signUp.jsx';
 import Login from '../components/login.jsx';
 import VideoPlayer from '../components/player.jsx';
 import Load from '../components/load.jsx';
-import Game from '../components/game.jsx'
+import Game from '../components/game.jsx';
 import './index.css';
-
-const Index = () => (
-  <div>
-    Welcome to Trivioke!
-    <SignUp />
-    <Login />
-    <Load />
-    <VideoPlayer />
-  </div>
-);
 
 const Front = () => (
   <div>
     Welcome to Trivioke!
     <SignUp />
+    Already a member?
     <Login />
   </div>
 );
@@ -37,12 +28,6 @@ const routing = (
       </div>
       <div>
         <Link to="/trivia">Trivia</Link>
-      </div>
-      <div>
-        <Link to="/video">Karaoke</Link>
-      </div>
-      <div>
-        <Link to="/game">Game</Link>
       </div>
       <Route exact path="/" component={Front} />
       <Route exact path="/signup" component={SignUp} />

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 import React from 'react';
 
@@ -8,17 +9,8 @@ class Scoreboard extends React.Component {
     };
   }
 
-  // function element_do(my_element, what_to_do) {
-  //   document.getElementById(my_element).style.display = what_to_do;
-  // }
-  componentDidMount() {
-
-  }
-
   render() {
-    const {
-      currTeam, teams, team1, team2, name1, name2,
-    } = this.props;
+    const { currTeam, team1, team2 } = this.props;
     return (
       <div>
         <div>Scoreboard</div>
@@ -31,11 +23,11 @@ class Scoreboard extends React.Component {
           </thead>
           <tbody>
             <tr id="team1" style={{ background: currTeam === 'team1' ? 'red' : 'white' }}>
-              <td>{name1}</td>
+              <td>{sessionStorage.team1}</td>
               <td>{team1}</td>
             </tr>
             <tr id="team2" style={{ background: currTeam === 'team2' ? 'red' : 'white' }}>
-              <td>{name2}</td>
+              <td>{sessionStorage.team2}</td>
               <td>{team2}</td>
             </tr>
           </tbody>

@@ -9,13 +9,13 @@ class Lifelines extends React.Component {
   }
 
   render() {
-    const { handleClick, triviaRequest } = this.props;
+    const { handleClick, triviaRequest, changeCat } = this.props;
     return (
       <div>
         Lifelines
         <button type="button" onClick={handleClick}>50/50</button>
         <button type="button" onClick={triviaRequest}>Change Question</button>
-        <button type="button" onClick={triviaRequest}>Change Category</button>
+        <button type="button" onClick={changeCat}>Change Category</button>
       </div>
     );
   }
