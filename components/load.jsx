@@ -69,7 +69,12 @@ class Load extends Component {
       );
     }
     return (
-      <div key="game">
+      <div
+        key="game"
+        style={{
+          display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh',
+        }}
+      >
         <Game category={category} diff={diff} name1={team1} name2={team2} />
       </div>
     );

@@ -36,13 +36,16 @@ class Login extends React.Component {
     const { redirect } = this.state;
     if (!redirect) {
       return (
-        <div>
-          Login
+        <div style={{
+          display: 'flex', justifyContent: 'center', alignItems: 'center', height: '25vh',
+        }}
+        >
           <div>
+            <p><strong>Login</strong></p>
             Username:
             <input type="text" name="name" onChange={this.handleChange} />
             Password:
-            <input type="text" name="pw" onChange={this.handleChange} />
+            <input type="text" name="pw" autoComplete="off" onChange={this.handleChange} />
             <input type="submit" value="Submit" onClick={this.handleSubmit} />
           </div>
         </div>

@@ -15,7 +15,6 @@ const Front = () => (
   <div>
     Welcome to Trivioke!
     <SignUp />
-    Already a member?
     <Login />
   </div>
 );
