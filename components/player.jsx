@@ -64,6 +64,7 @@ class VideoPlayer extends React.Component {
             fluid="true"
             className="embed-responsive-item"
             url={`https://www.youtube.com/embed/${video.uri}`}
+            position="relative"
             width="500px"
             height="350px"
             allowFullScreen
