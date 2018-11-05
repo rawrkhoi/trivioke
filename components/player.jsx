@@ -42,8 +42,22 @@ class VideoPlayer extends React.Component {
     const { video } = this.state;
     return (
       <div>
-        <button onClick={this.changeVideo} type="button">
+        <button
+          onClick={this.changeVideo}
+          type="button"
+          style={{
+            justifyContent: 'center', alignItems: 'center', height: '3vh',
+          }}
+        >
           Change Song
+        </button>
+        <button
+          type="button"
+          style={{
+            justifyContent: 'center', alignItems: 'center', height: '3vh',
+          }}
+        >
+          <Link to="/game">Game</Link>
         </button>
         <Iframe
           fluid="true"
@@ -53,9 +67,6 @@ class VideoPlayer extends React.Component {
           height="350px"
           allowFullScreen
         />
-        <button type="button">
-          <Link to="/game">Game</Link>
-        </button>
       </div>
     );
   }

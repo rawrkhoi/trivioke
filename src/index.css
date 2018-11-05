@@ -184,11 +184,16 @@ html {
 
 body {
   color: #404040;
-  background-image: url(https://cdn.hipwallpaper.com/i/72/63/Iuf3TR.png);
+  background-image: url(https://images3.alphacoders.com/117/117149.jpg);
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-position: center;
   font-size: 1rem;
+}
+
+input[type="text"] {
+  background-color: white;
+  width: 200px;
 }
 
 p,
