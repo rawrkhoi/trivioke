@@ -12,8 +12,8 @@ class Lifelines extends React.Component {
     const { handleClick, triviaRequest, changeCat } = this.props;
     return (
       <div>
-        <table style={{ width: '400px', textAlign: 'center' }}>
-          <thead>Lifelines</thead>
+        <h4>Lifelines</h4>
+        <table style={{ width: '400px', alignItems: 'center', display: 'flex', justifyContent: 'center' }}>
           <tbody>
             <tr>
               <td><button type="button" onClick={handleClick}>50/50</button></td>

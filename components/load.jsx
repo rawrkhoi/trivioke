@@ -57,16 +57,20 @@ class Load extends Component {
             <div key="team">
               <Team handleChange={this.handleChange} />
             </div>
-            <div key="filters">
-              <Filters click={this.handeleClick} />
-            </div>
-            <div key="diff">
-              <button type="button" name="diff" id="easy" onClick={this.handeleClick}>Easy</button>
-              <button type="button" name="diff" id="medium" onClick={this.handeleClick}>Medium</button>
-              <button type="button" name="diff" id="hard" onClick={this.handeleClick}>Hard</button>
-            </div>
+            <Filters click={this.handeleClick} />
+            <table style={{ alignItems: 'center', width: '400px', display: 'flex', justifyContent: 'center' }}>
+              <thead>
+                <tbody>
+                  <tr style={{ cellpadding: 8, cellspacing: 8 }}>
+                    <td><button type="button" name="diff" id="easy" onClick={this.handeleClick}><h5>Easy</h5></button></td>
+                    <td><button type="button" name="diff" id="medium" onClick={this.handeleClick}><h5>Medium</h5></button></td>
+                    <td><button type="button" name="diff" id="hard" onClick={this.handeleClick}><h5>Hard</h5></button></td>
+                  </tr>
+                </tbody>
+              </thead>
+            </table>
             <div key="begin">
-              <button type="button" onClick={this.begin}>Begin Game</button>
+              <button type="button" onClick={this.begin}><h5>Begin Game</h5></button>
             </div>
           </div>
         </center>
