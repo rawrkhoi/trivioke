@@ -22,11 +22,7 @@ Trivia quiz game made with React.
 
 ## Requirements
 
-- Node 0.10.x
-- React v16.6.0,
-- Webpack v4.23.1,
-- Bootstrap v3.3.7,
-- MySql database v5.7
+- MySQL database v5.7
 
 ## Development
 
@@ -39,14 +35,6 @@ From within the root directory:
 
 ```sh
 npm install
-npm install express
-npm install body-parser
-npm install path
-npm install axios
-npm install bcrypt
-npm install react-iframe
-npm install react-router
-npm install react-router-dom
 ```
 
 ### Roadmap
